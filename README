@@ -1,0 +1,50 @@
+PREREQUISITES
+
+Remember The Milk account (http://www.rememberthemilk.com)
+Outlook installed (tested with Outlook 2007, may work with other versions)
+Python installed (Tested with Python 2.7 on Windows XP and 7)
+Python for Windows Extensions (http://sourceforge.net/projects/pywin32/files/pywin32/)
+simplejson (http://pypi.python.org/pypi/simplejson)
+python-dateutil (http://pypi.python.org/pypi/python-dateutil)
+setuptools (http://pypi.python.org/pypi/setuptools/) needed for dateutil
+pacparser??
+
+KNOWN BUGS
+problematic values:
+    1. Anything besides olTaskNotStarted (0) and olTaskComplete (2) in outlook status http://msdn.microsoft.com/en-us/library/microsoft.office.interop.outlook.oltaskstatus.aspx (Definition appears in the beginning of rtm Proxy
+    2. Subject in outlook that is empty will generate error when trying to add to RTM (not allowed)
+    3. u'The connection to Microsoft Exchange is unavailable. Outlook must be online or connected to complete this action.' - raises an exception
+    4. two tasks with the same name will create an exception when syncing outlook to rtm
+    5. unclear when status are not syncining. need to create detailed test plan and carry it out looks like inconsistent
+    6. Due dates created in RTM sometimes do not sync to ol
+    7. Due dates created in RTM in the past generates exceptions
+
+KNOWN LIMITIATIONS
+RTM can't take capitals in tags so no point using them in ol
+
+LICENSE
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+details.
+
+You should have received a copy of the GNU General Public License along with
+this program.  If not, see <http://www.gnu.org/licenses/>.
+
+TODO
+1. change last references to gtg to be ol
+2. implement GIT
+3. Add license
+4. Add uft-8 statement in the beginning of each file
+5. http://sourceforge.net/projects/pywin32/files/pywin32/elete unused functions and imports -> pylint
+6. Write Introcution and usage scenarios
+7. Write credits to original creators
+8. work on bugs
+9. upload to github
+10. Use smart list filter instead of for loop in lists loading 
+11. support reccuring tasks

@@ -1,0 +1,6 @@
+*.pyc
+*.py~
+config
+prerequisites
+unused
+rtm.log
