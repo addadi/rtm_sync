@@ -72,13 +72,13 @@ class OlTask(GenericTask):
     def _set_due_date(self, due):
         if due == None or due == "" or due.year > 2036:
         #if due == None or due == "":
-            ol_due = datetime.datetime(2036, 1, 1, 00, 00, 0)
+            ol_due = datetime.datetime(4051, 1, 1, 00, 00, 0)
             #ol_due = None
-            self._ol_task.DueDate = ol_due
+            self._ol_task.otask.DueDate = self.__time_datetime_to_pytime(ol_due)
             self._ol_task.otask.Save
         else:
             ol_due = self.__time_datetime_to_pytime(due)
-            self._ol_task.DueDate = ol_due
+            self._ol_task.otask.DueDate = ol_due
             self._ol_task.otask.Save
 
     def _get_modified(self):
