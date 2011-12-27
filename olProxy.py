@@ -12,9 +12,9 @@
 # You should have received a copy of the GNU General Public License along with
 # this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import time
-import datetime
-import win32com.client
+#import time
+#import datetime
+#import win32com.client
 
 from genericProxy import GenericProxy
 from olTask      import OlTask

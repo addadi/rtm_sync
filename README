@@ -32,10 +32,12 @@ Python for Windows Extensions (http://sourceforge.net/projects/pywin32/files/pyw
 simplejson (http://pypi.python.org/pypi/simplejson)
 python-dateutil (http://pypi.python.org/pypi/python-dateutil)
 setuptools (http://pypi.python.org/pypi/setuptools/) needed for dateutil
+
 KNOWN LIMITIATIONS
 RTM can't take capitals in tags so no point using them in Outlook
 Only two Outlook statuses can be synced Task Not Started and Task Complete    
 Subject in outlook that is empty will generate error when trying to add to RTM (not allowed)
+Due date of None in outlook will be 1/1/36 in RTM
 
 LICENSE
 This program is free software: you can redistribute it and/or modify it under
@@ -52,7 +54,8 @@ You should have received a copy of the GNU General Public License along with
 this program.  If not, see <http://www.gnu.org/licenses/>.
 
 TODO
-2. implement GIT
-5. delete unused functions and imports -> pylint
-9. upload to github
-10. Use smart list filter instead of for loop in lists loading 
+1. Clean up unused code and comments
+2. Implement none dates in both Outlook and RTM
+
+Changes
+0.1 27/12/2011 - First Version

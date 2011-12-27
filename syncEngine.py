@@ -25,7 +25,7 @@ import pickle
 
 
 #GUI IMPORTS
-from time import sleep
+#from time import sleep
 #import gobject
 
 

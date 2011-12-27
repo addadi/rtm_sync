@@ -85,18 +85,17 @@ class RtmProxy(GenericProxy):
         return True
 
     def downloadFromWeb(self):
-        #NOTE: syncing only incomplete tasks for now
-        #(it's easier to debug the things you see)
-#        lists_id_list = map(lambda x: x.id, \
-#                             self.rtm.lists.getList().lists.list)
-#	we ignore the All Tasks smart list so that later we won't try to save the a task to a smart list instead of the actual list it belongs in RTM
+        #Original code was:
+        #lists_id_list = map(lambda x: x.id, \
+        #self.rtm.lists.getList().lists.list)
+        #we ignore the All Tasks smart list so that later we won't try to save the a task to a smart list instead of the actual list it belongs in RTM
 #perhaps there a smarter way to filter it in RTM api, like with tasks status
-#	i've also using a for in loop instead of the original lambda
+        #i've also using a for in loop instead of the original lambda
         lists_id_list = []
-        x=self.rtm.lists.getList().lists.list
-	for i in x:
-		if i.name != u'All Tasks':
-			lists_id_list.append(i.id)
+        x = self.rtm.lists.getList().lists.list
+        for i in x:
+            if i.name != u'All Tasks':
+                lists_id_list.append(i.id)
 
         # Download all non-archived tasks in the list with id x
         def get_list_of_taskseries(x):
