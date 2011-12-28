@@ -14,8 +14,9 @@ For this I took the rtm_sync plugin of the open source GTG software and implemen
 2. Adapting it to run on MS Windows instead of Linux
 3. Replaced the GTG end with an Outlook interface
 4. Added logging mechanism (rtm.log file will be created on the root folder of the scripts)
-5. Added a possibility to run the scripts behind a corporate proxy with PAC (http://en.wikipedia.org/wiki/Proxy_auto-config)
+5. Added a possibility to run the scripts behind a corporate proxy with PAC (http://en.wikipedia.org/wiki/Proxy_auto-config). Thanks to pacparser (http://code.google.com/p/pacparser/)
 6. Workarounds to solves issues related to Unicode text in tasks under Windows environment
+7. Removed threading
 The scripts are released by the GPL license terms and conditions.
 
 HOW RO RUN
@@ -55,7 +56,7 @@ this program.  If not, see <http://www.gnu.org/licenses/>.
 
 TODO
 1. Clean up unused code and comments
-2. Implement none dates in both Outlook and RTM
 
 Changes
 0.1 27/12/2011 - First Version
+0.15 28/12/2011 - Implemented ungly trick to solve the None due dates sync problem

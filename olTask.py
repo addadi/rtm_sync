@@ -62,19 +62,14 @@ class OlTask(GenericTask):
 
     def _get_due_date(self):
         due_date = self._ol_task.DueDate
-        if due_date == None or due_date == "" or due_date.year > 2036:
-        #if due_date == None or due_date == "":
-            return datetime.datetime(2036, 1, 1, 00, 00, 0)
-            #return None
+        if due_date == None or due_date == "" or due_date.year == 4501:
+            return None
         else:
             return self.__time_pytime_to_datetime(due_date)
 
     def _set_due_date(self, due):
-        if due == None or due == "" or due.year > 2036:
-        #if due == None or due == "":
-            ol_due = datetime.datetime(4051, 1, 1, 00, 00, 0)
-            #ol_due = None
-            self._ol_task.otask.DueDate = self.__time_datetime_to_pytime(ol_due)
+        if due == None or due == "" or due.year == 4501:
+            self._ol_task.otask.DueDate = self.__set_pytime_to_none()
             self._ol_task.otask.Save
         else:
             ol_due = self.__time_datetime_to_pytime(due)
@@ -83,7 +78,7 @@ class OlTask(GenericTask):
 
     def _get_modified(self):
         modified = self._ol_task.LastModificationTime
-        if modified == None or modified == "" or modified.year == 4051:
+        if modified == None or modified == "" or modified.year == 4501:
             return None
         return self.__time_pytime_to_datetime(modified)
 
@@ -104,3 +99,18 @@ class OlTask(GenericTask):
     def __time_datetime_to_pytime(self, dt_time):
         pyt_time = pywintypes.Time(int(time.mktime(dt_time.timetuple())))
         return pyt_time
+
+    def __set_pytime_to_none(self):
+        """helper function to trick Outlook to think it's a None duedate"""
+        #Pywintypes understands None date in outlook task
+        #as 1/1/4051 however you cannot set pytime.year
+        #to anything so instead I'll copy a none date
+        #from other field. will work only if the other
+        #date field is set to none as well
+        #If I'd find a solution to set a pytime to 4501
+        #I could avoid this ugly trick
+        if self._ol_task.StartDate.year == 4501:
+            value = self._ol_task.StartDate
+        elif self._ol_task.DateCompleted.year == 4501:
+            value = self._ol_task.DateCompleted
+        return value
