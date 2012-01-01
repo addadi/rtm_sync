@@ -14,7 +14,7 @@
 
 #import time
 #import datetime
-#import win32com.client
+import win32com.client
 
 from genericProxy import GenericProxy
 from olTask      import OlTask
