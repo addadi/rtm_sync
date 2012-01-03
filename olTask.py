@@ -28,7 +28,7 @@ class OlTask(GenericTask):
 
     def _set_title(self, title):
         self._ol_task.otask.Subject = title
-        self._ol_task.otask.Save 
+        self._ol_task.otask.Save()
 
     def _get_id(self):
         return self._ol_task.EntryID
@@ -43,19 +43,18 @@ class OlTask(GenericTask):
     def _set_tags(self, tags):
         tagstxt = ','.join(tags)
         self._ol_task.otask.Categories = tagstxt
-        self._ol_task.otask.Save
+        self._ol_task.otask.Save()
 
     def _get_text(self):
         return self._ol_task.Body
 
     def _set_text(self, text):
         self._ol_task.otask.Body = text
-        #self._ol_task.otask.Save()
-        self._ol_task.otask.Save
+        self._ol_task.otask.Save()
 
     def _set_status(self, status):
         self._ol_task.otask.Status = status
-        self._ol_task.otask.Save
+        self._ol_task.otask.Save()
 
     def _get_status(self):
         return self._ol_task.Status
@@ -70,11 +69,11 @@ class OlTask(GenericTask):
     def _set_due_date(self, due):
         if due == None or due == "" or due.year == 4501:
             self._ol_task.otask.DueDate = self.__set_pytime_to_none()
-            self._ol_task.otask.Save
+            self._ol_task.otask.Save()
         else:
             ol_due = self.__time_datetime_to_pytime(due)
             self._ol_task.otask.DueDate = ol_due
-            self._ol_task.otask.Save
+            self._ol_task.otask.Save()
 
     def _get_modified(self):
         modified = self._ol_task.LastModificationTime
